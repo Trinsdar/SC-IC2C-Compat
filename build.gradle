@@ -1,0 +1,74 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven {
+			name = "forge"
+			url = "http://files.minecraftforge.net/maven"
+		}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+	}
+}
+
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = "${mod_version}"
+
+group= "sc_ic2c_compat" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+
+minecraft {
+	version = "${forgemc_version}-${forge_version}"
+	runDir = "run"
+	mappings = "${mappings_version}"
+	replace "@VERSION@", project.version
+}
+
+repositories {
+	maven {
+		name = "ic2"
+		url = "http://maven.ic2.player.to/"
+	}
+	maven {
+		name = "Modmuss50"
+		url = "http://maven.modmuss50.me/"
+	}
+	maven {
+		url = "https://www.cursemaven.com"
+	}
+	maven { // JEI
+		name 'DVS1 Maven FS'
+		url 'http://dvs1.progwml6.com/files/maven/'
+	}
+}
+
+
+dependencies {
+	runtime "mezz.jei:jei_1.12.2:${jei_version}"
+	compileOnly ('RebornCore:RebornCore-1.12.2:3.13.2.+:dev'){
+		transitive = false
+	}
+	runtime ('RebornCore:RebornCore-1.12.2:3.13.2.+:universal'){
+		transitive = false
+	}
+	compile "curse.maven:ic2-classic:2979877"
+	compile "curse.maven:steves-carts:2834652"
+}
+
+processResources{
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		expand 'version': project.version, 'mcversion': project.minecraft.version
+	}
+
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
+}
