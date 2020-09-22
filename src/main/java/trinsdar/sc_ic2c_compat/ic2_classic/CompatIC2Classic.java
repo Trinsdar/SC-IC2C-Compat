@@ -1,4 +1,4 @@
-package vswe.stevescarts.compat.ic2_classic;
+package trinsdar.sc_ic2c_compat.ic2_classic;
 
 import vswe.stevescarts.api.ISCHelpers;
 import vswe.stevescarts.api.ISCPlugin;

@@ -56,7 +56,7 @@ dependencies {
 		transitive = false
 	}
 	compile "curse.maven:ic2-classic:2979877"
-	compile "curse.maven:steves-carts:2834652"
+	compile "curse.maven:steves-carts:2834651"
 }
 
 processResources{

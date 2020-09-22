@@ -1,4 +1,4 @@
-package vswe.stevescarts.compat.ic2_classic;
+package trinsdar.sc_ic2c_compat.ic2_classic;
 
 import ic2.api.classic.audio.PositionSpec;
 import ic2.core.IC2;
